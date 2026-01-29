@@ -116,6 +116,28 @@ span {
     margin-top: 1.2rem;
     text-align: justify;
 }
+
+.about-skills {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.8rem;
+    margin-top: 2.5rem;
+}
+
+.skills-group h4 {
+    color: var(--main-color);
+    font-size: 1.2rem;
+    margin-bottom: 0.6rem;
+}
+
+.skills-group ul {
+    padding-left: 1.2rem;
+}
+
+.skills-group li {
+    margin-bottom: 0.4rem;
+    opacity: 0.9;
+}
 .services h2, 
 .portfolio h2, 
 .contact {
@@ -177,61 +199,28 @@ span {
     background-color: var(--bg-color-02);
 }
 .portfolio-container {
-    display: grid;
-    gap: 1.2rem;
-}
-.portfolio-box{
-    position:relative;
-    border-radius: 0.6rem;
-    box-shadow: 0 0 0.6rem var(--bg-color-01);
-    overflow: hidden;
-    display: flex;
-}
-.portfolio-box img {
-    width: 100%;
-    transition: 0.5s ease;
-}
-.portfolio-box img:hover {
-    transform: scale(1.1);
-}
-.portfolio-box .portfolio-layer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(transparent, var(--main-color));
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    padding: 0 4rem;
-    transform: translateY(30rem);
-    transition: 0.5s ease;
+    gap: 2.5rem;
 }
-.portfolio-box:hover .portfolio-layer {
-    transform: translateY(0);
+.portfolio-box{
+    border-radius: 0.8rem;
+    background-color: var(--bg-color-01);
+    border: 1px solid var(--color-05);
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1.5rem;
+    padding: 1.8rem;
 }
-.portfolio-layer h4 {
-    font-size: 1.8rem;
-}
-.portfolio-layer p {
-    margin: 0.2rem 0 0.5rem;
-}
-.portfolio-layer a {
-    display: inline-flex;
-    justify-content: center;
-    align-items: center;
-    width: 3rem;
-    height: 3rem;
-    background: var(--text-color);
-    border-radius: 50%;
-}
-.portfolio-layer a i {
-    font-size: 1.2rem;
-    color: var(--bg-color-02);
-}
+/* ==== PORTFOLIO ANTIGO DESATIVADO ==== */
+/*
+.portfolio-layer { ... }
+.portfolio-box img:hover { ... }
+.portfolio-box:hover { ... }
+.portfolio-container { grid-template-columns: ... }
+*/
+
 /*formulario*/
 form {
     max-width: 45rem;
@@ -471,12 +460,19 @@ footer {
         width: 60%;
         margin-bottom: 2rem;
     }
-    .portfolio-container {
-        grid-template-columns: auto auto;
-    }
     form .input-box input{
         width: 49%;
     }
+    .portfolio-box {
+        flex-direction: row;
+        align-items: center;
+    }
+    .portfolio-box:nth-child(even) {
+        flex-direction: row-reverse;
+    }
+
+
+
 }
 /*Large (lg): Notebook */
 @media (min-width: 992px)  {
@@ -496,8 +492,195 @@ footer {
     .home-content h3 {
         font-size: 2rem;
     }
-    .portfolio-container {
-        grid-template-columns: auto auto auto;
-    }
 }
 /* /mediaqueries*/
+
+/* ===============================
+   PORTFOLIO – CASE STUDY LAYOUT
+================================ */
+
+.portfolio {
+    background-color: var(--bg-color-02);
+}
+
+.portfolio-container {
+    display: flex !important;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+/* Card do projeto */
+.portfolio-box {
+    display: flex;
+    align-items: center;
+    gap: 2.5rem;
+    padding: 2rem;
+    background-color: var(--bg-color-01);
+    border-radius: 1rem;
+}
+
+/* Conteúdo */
+.portfolio-content {
+    flex: 1;
+}
+
+.portfolio-content h3 {
+    font-size: 1.9rem;
+    margin-bottom: 0.6rem;
+}
+
+.portfolio-content p {
+    text-align: left;
+    line-height: 1.6;
+}
+
+/* Imagem */
+.portfolio-media {
+    flex: 1;
+}
+
+.portfolio-media img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 0.8rem;
+    display: block;
+}
+
+/* Alternância esquerda / direita */
+.portfolio-box:nth-child(even) {
+    flex-direction: row-reverse;
+}
+
+/* Links */
+.project-links {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.2rem;
+    flex-wrap: wrap;
+}
+
+.project-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.5rem 1.2rem;
+    border-radius: 2rem;
+    border: 1px solid var(--main-color);
+    color: var(--main-color);
+    font-weight: 600;
+    transition: 0.3s ease;
+}
+
+.project-link:hover {
+    background-color: var(--main-color);
+    color: var(--bg-color-02);
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
+@media (max-width: 768px) {
+    .portfolio-box {
+        flex-direction: column;
+    }
+}
+
+/* ===== MEDIA CAROUSEL ===== */
+
+.portfolio-media {
+    overflow: hidden;
+    border-radius: 0.8rem;
+}
+
+.media-carousel {
+    display: flex;
+    width: 100%;
+    transition: transform 0.8s ease;
+}
+
+.media-carousel img {
+    width: 100%;
+    flex: 0 0 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+/* Hover: desliza para a direita */
+.portfolio-box:hover .media-carousel {
+    transform: translateX(-100%);
+}
+
+/* Segunda imagem no hover prolongado */
+.portfolio-box:hover .media-carousel:hover {
+    transform: translateX(-200%);
+}
+
+@media (max-width: 768px) {
+    .media-carousel {
+        overflow-x: auto;
+        scroll-snap-type: x mandatory;
+    }
+
+    .media-carousel img {
+        scroll-snap-align: center;
+    }
+}
+
+/* Zoom suave para projetos com 1 imagem */
+.portfolio-media.media-zoom img {
+    transition: transform 0.6s ease;
+}
+
+.portfolio-box:hover .portfolio-media.media-zoom img {
+    transform: scale(1.03);
+}
+
+/* ===== HABILIDADES ===== */
+
+.skills {
+  background: var(--bg-color-01);
+  padding: 6rem 4rem;
+}
+
+.skills h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+}
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+  gap: 2.2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.skill-card {
+  background: linear-gradient(145deg, #0e0f19, #141528);
+  border-radius: 14px;
+  padding: 2.4rem 1.8rem;
+  text-align: center;
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.35s ease;
+}
+
+.skill-card span {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin-bottom: 0.6rem;
+  color: #fff;
+}
+
+.skill-card small {
+  font-size: 1rem;
+  opacity: 0.75;
+}
+
+.skill-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(238, 76, 124, 0.25);
+  border-color: var(--main-color);
+}
