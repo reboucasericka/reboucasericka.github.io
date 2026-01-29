@@ -9,6 +9,18 @@ menuHamburguer.addEventListener('click', () => {
 //CHAMA A FUNÇÃO toggleMenu ao clicar
     toggleMenu(); 
 });
+// CONTROLA O HEADER AO FAZER SCROLL
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => {
+    if (!header) {
+        return;
+    }
+    if (window.scrollY > 40) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
 // função que alterna a visibilidade do menu de navegação e mudda o ícone do menu hamburguer
 function toggleMenu()  {
 //seleciona o elemento do menu de navehação do menu hamburguer
